@@ -1,6 +1,7 @@
 package com.example.githhubufaber.network
 
-import com.example.githhubufaber.network.models.GithubModel
+
+import com.example.githhubufaber.network.models.GithubModelItem
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -29,7 +30,7 @@ private val retrofit = Retrofit.Builder()
 interface ApiService {
 
     @GET("repositories")
-    fun fetchGithubRepos(): Deferred<GithubModel>
+    fun fetchGithubRepos(): Deferred<List<GithubModelItem>>
 
 }
 

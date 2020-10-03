@@ -44,7 +44,6 @@
                     android:paddingLeft="@dimen/size_16dp"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/text_size_18"
-                    app:formattedPlayer="@{property}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

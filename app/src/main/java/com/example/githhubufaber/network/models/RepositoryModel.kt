@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 
 data class RepositoryModel(
     @Json(name = "id")
-    val Id :String ,
+    val Id :Int ,
     val name :String,
     @Json(name = "full_name")
     val fullName :String,
