@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.githhubufaber.network.Api
 import com.example.githhubufaber.network.models.ContributorModel
 import com.example.githhubufaber.network.models.GithubModelItem
+import com.example.githhubufaber.showTostMessage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -18,6 +19,7 @@ class RepoActivityViewModel(
     application: Application
 ) : ViewModel() {
 
+    lateinit var app: Application
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -39,6 +41,7 @@ class RepoActivityViewModel(
 
 
     init {
+        app = application
         _selectedProperty.value = contributorModel
         getUserRepositories(contributorModel.name)
 
@@ -48,8 +51,16 @@ class RepoActivityViewModel(
         coroutineScope.launch {
             val getRepositoriesDeffered = Api.retrofitService.fetchUserRepos(name)
             val listResult = getRepositoriesDeffered.await()
-            if (listResult.size > 0) {
-                _repositoriesList.value = listResult
+            try {
+
+
+                if (listResult.size > 0) {
+                    _repositoriesList.value = listResult
+                }
+            }catch (t:Throwable){
+
+                showTostMessage(app.applicationContext)
+
             }
         }
 

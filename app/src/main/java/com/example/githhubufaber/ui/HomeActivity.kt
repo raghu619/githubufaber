@@ -18,7 +18,8 @@ class HomeActivity : AppCompatActivity() {
         val activity = requireNotNull(this) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        ViewModelProviders.of(activity).get(HomeActivityViewModel::class.java)
+        ViewModelProviders.of(this, HomeActivityViewModel.Factory(activity.application))
+            .get(HomeActivityViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

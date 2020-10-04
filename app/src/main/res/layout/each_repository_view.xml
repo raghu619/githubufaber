@@ -39,7 +39,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/repo_name"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/size_50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:gravity="center|start"
                     android:text="@{property.name}"
@@ -54,8 +54,8 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="@dimen/size_50dp"
-                    android:layout_height="@dimen/size_50dp"
+                    android:layout_width="@dimen/size_80dp"
+                    android:layout_height="@dimen/size_80dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"

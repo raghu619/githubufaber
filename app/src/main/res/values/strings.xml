@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">githhubufaber</string>
+    <string name="network_error">NetWork Error</string>
+
 </resources>

@@ -1,18 +1,20 @@
 package com.example.githhubufaber.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import android.util.Log
+import androidx.lifecycle.*
 import com.example.githhubufaber.network.Api
 import com.example.githhubufaber.network.models.GithubModelItem
+import com.example.githhubufaber.showTostMessage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 
-class HomeActivityViewModel : ViewModel() {
+class HomeActivityViewModel(application: Application) : AndroidViewModel(application) {
 
+    lateinit var  app: Application
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -32,12 +34,17 @@ class HomeActivityViewModel : ViewModel() {
 
     init {
 
+        app =application
         getGithubRepos()
     }
 
     private fun getGithubRepos() {
 
         coroutineScope.launch {
+
+           try {
+
+
             val getRepoListDeferred = Api.retrofitService.fetchGithubRepos()
             val listResult = getRepoListDeferred.await()
             if (listResult.size > 0) {
@@ -47,6 +54,13 @@ class HomeActivityViewModel : ViewModel() {
                 }.take(20)
 
             }
+
+               } catch (t:Throwable){
+
+               Log.v("test",t.toString())
+               showTostMessage(app.applicationContext)
+
+           }
 
         }
 
@@ -58,6 +72,18 @@ class HomeActivityViewModel : ViewModel() {
 
     fun displayPropertyDetailsComplete() {
         _navigateToSelectedProperty.value = null
+    }
+
+
+    class Factory(val app: Application) :
+        ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(HomeActivityViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return HomeActivityViewModel(app) as T
+            }
+            throw IllegalArgumentException("Unable to construct viewmodel")
+        }
     }
 
 

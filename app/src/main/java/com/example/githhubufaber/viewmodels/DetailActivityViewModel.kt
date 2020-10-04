@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.githhubufaber.network.Api
 import com.example.githhubufaber.network.models.ContributorModel
 import com.example.githhubufaber.network.models.GithubModelItem
+import com.example.githhubufaber.showTostMessage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -20,6 +21,7 @@ class DetailActivityViewModel(
 ) : ViewModel() {
 
 
+    lateinit var  app: Application
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -41,6 +43,7 @@ class DetailActivityViewModel(
 
 
     init {
+        app = application
         _selectedProperty.value = githubModelItem
         getConRepoContributors(githubModelItem.fullName)
 
@@ -61,9 +64,18 @@ class DetailActivityViewModel(
                 username.split("/")[0],
                 username.split("/")[1]
             )
-            val listResult = getContributorListDeferred.await()
-            if (listResult.size > 0) {
-                _contributorsList.value = listResult
+            try {
+
+
+                val listResult = getContributorListDeferred.await()
+                if (listResult.size > 0) {
+                    _contributorsList.value = listResult
+                }
+
+            }catch (t:Throwable){
+
+                showTostMessage(app.applicationContext)
+
             }
 
 
