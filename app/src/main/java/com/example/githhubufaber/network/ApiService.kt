@@ -1,7 +1,6 @@
 package com.example.githhubufaber.network
 
 
-import android.os.Build
 import com.example.githhubufaber.BuildConfig
 import com.example.githhubufaber.network.models.ContributorModel
 import com.example.githhubufaber.network.models.GithubModelItem
@@ -15,7 +14,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 
 private const val BASE_URL = "https://api.github.com/"

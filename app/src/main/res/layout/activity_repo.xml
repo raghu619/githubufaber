@@ -20,8 +20,8 @@
 
         <ImageView
             android:id="@+id/repo_user_image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/size_100dp"
+            android:layout_height="@dimen/size_100dp"
             android:layout_marginTop="56dp"
             app:imageUrl="@{viewModel.selectedProperty.avatarUrl}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -62,13 +62,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/user_repo_recycler_view"
             android:layout_width="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:listData="@{viewModel.repositoriesList}"
-            app:layout_constraintTop_toBottomOf="@+id/repository_text" />
+            app:layout_constraintTop_toBottomOf="@+id/repository_text"
+            app:listData="@{viewModel.repositoriesList}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

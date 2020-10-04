@@ -32,6 +32,12 @@ class RepoActivityViewModel(
     val repositoriesList: LiveData<List<GithubModelItem>>
         get() = _repositoriesList
 
+    private val _navigateToSelectedProperty = MutableLiveData<GithubModelItem>()
+
+    val navigateToSelectedProperty: LiveData<GithubModelItem>
+        get() = _navigateToSelectedProperty
+
+
     init {
         _selectedProperty.value = contributorModel
         getUserRepositories(contributorModel.name)
@@ -48,6 +54,16 @@ class RepoActivityViewModel(
         }
 
     }
+
+
+    fun displayPropertyDetails(githubModelItem: GithubModelItem) {
+        _navigateToSelectedProperty.value = githubModelItem
+    }
+
+    fun displayPropertyDetailsComplete() {
+        _navigateToSelectedProperty.value = null
+    }
+
 
     class RepoViewModelFactory(
         private val contributorModel: ContributorModel,

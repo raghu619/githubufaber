@@ -19,16 +19,25 @@
 
         <ImageView
             android:id="@+id/contributor_image_view"
+            android:layout_width="@dimen/size_80dp"
+            android:layout_height="@dimen/size_80dp"
+            android:layout_marginTop="28dp"
+            app:imageUrl="@{property.avatarUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.077"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:imageUrl="@{property.avatarUrl}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_marginTop="16dp"
+            android:text="@{property.name}"
+            app:layout_constraintEnd_toEndOf="@+id/contributor_image_view"
+            app:layout_constraintStart_toStartOf="@+id/contributor_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/contributor_image_view" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

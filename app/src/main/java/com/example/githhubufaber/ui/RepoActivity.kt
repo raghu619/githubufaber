@@ -1,7 +1,9 @@
 package com.example.githhubufaber.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.githhubufaber.adapters.GithubRepoAdapter
 import com.example.githhubufaber.databinding.ActivityRepoBinding
@@ -19,9 +21,19 @@ class RepoActivity : AppCompatActivity() {
         val viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(RepoActivityViewModel::class.java)
         binding.viewModel = viewModel
-        binding.userRepoRecyclerView.adapter=  GithubRepoAdapter(GithubRepoAdapter.OnClickListener {
+        binding.userRepoRecyclerView.adapter = GithubRepoAdapter(GithubRepoAdapter.OnClickListener {
+            viewModel.displayPropertyDetails(it)
 
+        })
+        viewModel.navigateToSelectedProperty.observe(this, Observer {
+            if (null != it) {
 
+                val intent = Intent(this, DetailActivity::class.java)
+                intent.putExtra("user_repo", it)
+                startActivity(intent)
+                viewModel.displayPropertyDetailsComplete()
+
+            }
         })
 
         setContentView(binding.root)
