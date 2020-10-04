@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githhubufaber.R
+import com.example.githhubufaber.adapters.GithubRepoAdapter
 import com.example.githhubufaber.databinding.ActivityHomeBinding
 import com.example.githhubufaber.viewmodels.HomeActivityViewModel
 
 class HomeActivity : AppCompatActivity() {
+
 
     private val viewModel: HomeActivityViewModel by lazy {
         val activity = requireNotNull(this) {
@@ -21,11 +24,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityHomeBinding.inflate(layoutInflater)
         binding.setLifecycleOwner(this)
-        viewModel.properties.observe(this, Observer {
-            val list = it
-
-        })
-
-
+        binding.viewModel = viewModel
+        binding.reposRecyclerView.adapter = GithubRepoAdapter()
+        setContentView(binding.root)
     }
 }
