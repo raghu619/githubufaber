@@ -49,11 +49,9 @@ class RepoActivityViewModel(
 
     private fun getUserRepositories(name: String) {
         coroutineScope.launch {
+            try {
             val getRepositoriesDeffered = Api.retrofitService.fetchUserRepos(name)
             val listResult = getRepositoriesDeffered.await()
-            try {
-
-
                 if (listResult.size > 0) {
                     _repositoriesList.value = listResult
                 }

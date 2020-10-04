@@ -58,6 +58,7 @@ class DetailActivityViewModel(
         _navigateToUsersRepositories.value = null
     }
 
+    // fetches repositories contributors list
     private fun getConRepoContributors(username: String) {
         coroutineScope.launch {
             val getContributorListDeferred = Api.retrofitService.fetchContributorsData(

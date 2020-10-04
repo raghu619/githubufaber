@@ -35,7 +35,7 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
         app = application
         getGithubRepos()
     }
-
+    // fetches top github repositories list
     private fun getGithubRepos() {
 
         coroutineScope.launch {
