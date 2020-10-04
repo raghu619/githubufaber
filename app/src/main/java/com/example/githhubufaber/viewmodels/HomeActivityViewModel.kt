@@ -17,6 +17,13 @@ class HomeActivityViewModel : ViewModel() {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
 
+    private val _navigateToSelectedProperty = MutableLiveData<GithubModelItem>()
+
+    val navigateToSelectedProperty: LiveData<GithubModelItem>
+        get() = _navigateToSelectedProperty
+
+
+
     private val _properties = MutableLiveData<List<GithubModelItem>>()
 
     val properties: LiveData<List<GithubModelItem>>
@@ -31,8 +38,8 @@ class HomeActivityViewModel : ViewModel() {
     private fun getGithubRepos() {
 
         coroutineScope.launch {
-            var getRepoListDeferred = Api.retrofitService.fetchGithubRepos()
-            var listResult = getRepoListDeferred.await()
+            val getRepoListDeferred = Api.retrofitService.fetchGithubRepos()
+            val listResult = getRepoListDeferred.await()
             if (listResult.size > 0) {
 
                 _properties.value = listResult.filter {
@@ -43,6 +50,14 @@ class HomeActivityViewModel : ViewModel() {
 
         }
 
+    }
+
+    fun displayPropertyDetails(githubModelItem: GithubModelItem) {
+        _navigateToSelectedProperty.value = githubModelItem
+    }
+
+    fun displayPropertyDetailsComplete() {
+        _navigateToSelectedProperty.value = null
     }
 
 

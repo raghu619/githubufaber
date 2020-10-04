@@ -10,7 +10,8 @@ import com.example.githhubufaber.databinding.EachRepositoryViewBinding
 import com.example.githhubufaber.network.models.GithubModelItem
 
 
-class GithubRepoAdapter() : ListAdapter<GithubModelItem, GithubItemViewHolder>(DiffCallback) {
+class GithubRepoAdapter(val onClickListener: OnClickListener) :
+    ListAdapter<GithubModelItem, GithubItemViewHolder>(DiffCallback) {
 
 
     class GithubItemViewHolder(private var binding: EachRepositoryViewBinding) :
@@ -59,10 +60,17 @@ class GithubRepoAdapter() : ListAdapter<GithubModelItem, GithubItemViewHolder>(D
 
     override fun onBindViewHolder(holder: GithubItemViewHolder, position: Int) {
         val githubModelItem = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(githubModelItem)
+        }
         holder.bind(githubModelItem)
     }
 
 
+    class OnClickListener(val clickListener: (githubModelItem: GithubModelItem) -> Unit) {
+
+        fun onClick(githubModelItem: GithubModelItem) = clickListener(githubModelItem)
+    }
 
 
 }

@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField("String", "ACESS_TOKEN", ACCESS_TOKEN)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

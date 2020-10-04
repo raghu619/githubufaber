@@ -5,6 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.githhubufaber.viewmodels.RepoActivityViewModel" />
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
+            app:imageUrl="@{viewModel.selectedProperty.avatarUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="TextView"
+            android:text="@{viewModel.selectedProperty.name}"
             app:layout_constraintEnd_toEndOf="@+id/repo_user_image_view"
             app:layout_constraintStart_toStartOf="@+id/repo_user_image_view"
             app:layout_constraintTop_toBottomOf="@+id/repo_user_image_view" />
@@ -53,10 +62,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/user_repo_recycler_view"
             android:layout_width="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:listData="@{viewModel.repositoriesList}"
             app:layout_constraintTop_toBottomOf="@+id/repository_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
