@@ -4,125 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.githhubufaber.viewmodels.DetailActivityViewModel" />
     </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
-            <ImageView
-                android:id="@+id/use_image_view"
-                android:layout_width="@dimen/size_100dp"
-                android:layout_height="@dimen/size_100dp"
-                android:layout_marginStart="@dimen/size_6dp"
-                android:layout_marginTop="@dimen/size_16dp"
-                app:imageUrl="@{viewModel.selectedProperty.owner.avatarUrl}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+        <ImageView
+            android:id="@+id/use_image_view"
+            android:layout_width="@dimen/size_100dp"
+            android:layout_height="@dimen/size_100dp"
+            android:layout_marginStart="@dimen/size_6dp"
+            android:layout_marginTop="@dimen/size_16dp"
+            app:imageUrl="@{viewModel.selectedProperty.owner.avatarUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/user_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_6dp"
-                android:fontFamily="@font/actor"
-                android:text="@{viewModel.selectedProperty.name}"
-                app:layout_constraintBottom_toBottomOf="@+id/use_image_view"
-                app:layout_constraintEnd_toEndOf="@+id/user_fullname"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/user_fullname"
-                app:layout_constraintTop_toBottomOf="@+id/user_fullname" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_6dp"
+            android:fontFamily="@font/actor"
+            android:text="@{viewModel.selectedProperty.name}"
+            app:layout_constraintBottom_toBottomOf="@+id/use_image_view"
+            app:layout_constraintEnd_toEndOf="@+id/user_fullname"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/user_fullname"
+            app:layout_constraintTop_toBottomOf="@+id/user_fullname" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/user_fullname"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_8dp"
-                android:layout_marginTop="@dimen/size_20dp"
-                android:layout_marginEnd="@dimen/size_64dp"
-                android:fontFamily="@font/actor"
-                android:text="@{viewModel.selectedProperty.fullName}"
-                android:typeface="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/use_image_view"
-                app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_fullname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_8dp"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:layout_marginEnd="@dimen/size_64dp"
+            android:fontFamily="@font/actor"
+            android:text="@{viewModel.selectedProperty.fullName}"
+            android:typeface="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/use_image_view"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <View
-                android:id="@+id/divider_one"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/size_20dp"
-                android:layout_marginTop="@dimen/size_16dp"
-                android:background="@color/color_placeholder_grey"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/use_image_view" />
+        <View
+            android:id="@+id/divider_one"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_16dp"
+            android:background="@color/color_placeholder_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/use_image_view" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/description_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_6dp"
-                android:fontFamily="@font/actor"
-                android:layout_marginTop="20dp"
-                android:text="@string/description_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider_one" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_6dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/actor"
+            android:text="@string/description_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_one" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/description_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/actor"
-                android:layout_marginTop="@dimen/size_6dp"
-                android:text="@{viewModel.selectedProperty.description}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/description_title"
-                app:layout_constraintTop_toBottomOf="@+id/description_title"
-                tools:text="skjsdkf  sdfjk s sdfkj sdjkf sdkf sjksfk sd kflsfdk " />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_6dp"
+            android:fontFamily="@font/actor"
+            android:text="@{viewModel.selectedProperty.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/description_title"
+            app:layout_constraintTop_toBottomOf="@+id/description_title"
+            tools:text="skjsdkf  sdfjk s sdfkj sdjkf sdkf sjksfk sd kflsfdk " />
 
-            <View
-                android:id="@+id/divider_two"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/size_20dp"
-                android:layout_marginTop="@dimen/size_16dp"
-                android:background="@color/color_placeholder_grey"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description_text" />
+        <View
+            android:id="@+id/divider_two"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_16dp"
+            android:background="@color/color_placeholder_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_text" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/contributors_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_6dp"
-                android:layout_marginTop="@dimen/size_16dp"
-                android:fontFamily="@font/actor"
-                android:text="@string/contributor_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider_two" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/contributors_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_6dp"
+            android:layout_marginTop="@dimen/size_16dp"
+            android:fontFamily="@font/actor"
+            android:text="@string/contributor_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_two" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/contributor_recycler_view"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/size_8dp"
-                android:layout_marginEnd="@dimen/size_6dp"
-                android:layout_marginBottom="@dimen/size_8dp"
-                android:clipToPadding="false"
-                android:padding="@dimen/size_6dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/contributors_text"
-                app:layout_constraintTop_toBottomOf="@+id/contributors_text"
-                app:spanCount="3" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contributor_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_8dp"
+            android:layout_marginEnd="@dimen/size_6dp"
+            android:layout_marginBottom="@dimen/size_8dp"
+            android:clipToPadding="false"
+            android:padding="@dimen/size_6dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/contributors_text"
+            app:layout_constraintTop_toBottomOf="@+id/contributors_text"
+            app:spanCount="3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -53,7 +53,7 @@ interface ApiService {
 
 }
 
-
+// common api service object
 object Api {
 
     val retrofitService: ApiService by lazy {
