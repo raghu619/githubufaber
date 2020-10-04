@@ -37,8 +37,8 @@ class DetailActivity : AppCompatActivity() {
         viewModel.navigateToUsersRepositories.observe(this, Observer {
             if (null != it) {
 
-                val intent = Intent(this,RepoActivity::class.java)
-                intent.putExtra("contributor_repo",it)
+                val intent = Intent(this, RepoActivity::class.java)
+                intent.putExtra("contributor_repo", it)
                 startActivity(intent)
                 viewModel.navigateToRepositoriesDetailsComplete()
 

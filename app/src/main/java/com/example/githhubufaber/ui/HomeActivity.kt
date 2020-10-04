@@ -34,8 +34,8 @@ class HomeActivity : AppCompatActivity() {
         viewModel.navigateToSelectedProperty.observe(this, Observer {
             if (null != it) {
 
-                val intent = Intent(this@HomeActivity,DetailActivity::class.java)
-                intent.putExtra("user_repo",it)
+                val intent = Intent(this@HomeActivity, DetailActivity::class.java)
+                intent.putExtra("user_repo", it)
                 startActivity(intent)
                 viewModel.displayPropertyDetailsComplete()
 

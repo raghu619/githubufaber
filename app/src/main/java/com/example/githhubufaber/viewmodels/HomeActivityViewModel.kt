@@ -1,7 +1,6 @@
 package com.example.githhubufaber.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.githhubufaber.network.Api
 import com.example.githhubufaber.network.models.GithubModelItem
@@ -14,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class HomeActivityViewModel(application: Application) : AndroidViewModel(application) {
 
-    lateinit var  app: Application
+    lateinit var app: Application
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -25,7 +24,6 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
         get() = _navigateToSelectedProperty
 
 
-
     private val _properties = MutableLiveData<List<GithubModelItem>>()
 
     val properties: LiveData<List<GithubModelItem>>
@@ -34,7 +32,7 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
 
     init {
 
-        app =application
+        app = application
         getGithubRepos()
     }
 
@@ -42,25 +40,25 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
 
         coroutineScope.launch {
 
-           try {
+            try {
 
 
-            val getRepoListDeferred = Api.retrofitService.fetchGithubRepos()
-            val listResult = getRepoListDeferred.await()
-            if (listResult.size > 0) {
+                val getRepoListDeferred = Api.retrofitService.fetchGithubRepos()
+                val listResult = getRepoListDeferred.await()
+                if (listResult.size > 0) {
 
-                _properties.value = listResult.filter {
-                    it.private == false
-                }.take(20)
+                    _properties.value = listResult.filter {
+                        it.private == false
+                    }.take(20)
+
+                }
+
+            } catch (t: Throwable) {
+
+
+                showTostMessage(app.applicationContext)
 
             }
-
-               } catch (t:Throwable){
-
-               Log.v("test",t.toString())
-               showTostMessage(app.applicationContext)
-
-           }
 
         }
 
