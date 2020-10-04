@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/contributor_image_view"
-            android:layout_width="@dimen/size_80dp"
-            android:layout_height="@dimen/size_80dp"
+            android:layout_width="@dimen/size_100dp"
+            android:layout_height="@dimen/size_100dp"
             android:layout_marginTop="@dimen/size_28dp"
             app:imageUrl="@{property.avatarUrl}"
             app:layout_constraintEnd_toEndOf="parent"

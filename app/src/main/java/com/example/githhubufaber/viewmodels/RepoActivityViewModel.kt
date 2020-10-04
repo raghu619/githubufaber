@@ -47,6 +47,7 @@ class RepoActivityViewModel(
 
     }
 
+    // fetch repositories list for contributor
     private fun getUserRepositories(name: String) {
         coroutineScope.launch {
             try {

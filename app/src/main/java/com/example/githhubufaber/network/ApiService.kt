@@ -31,6 +31,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 
+// Retrofit Api Services
 interface ApiService {
 
 
@@ -51,6 +52,7 @@ interface ApiService {
     fun fetchUserRepos(@Path(value = "name") name: String): Deferred<List<GithubModelItem>>
 
 }
+
 
 object Api {
 
